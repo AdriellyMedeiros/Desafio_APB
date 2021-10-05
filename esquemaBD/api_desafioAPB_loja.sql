@@ -1,9 +1,8 @@
-drop schema api_desafioAPB_loja;
 CREATE SCHEMA api_desafioAPB_loja;
 USE api_desafioAPB_loja;
 
 CREATE TABLE `endereco` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `rua` VARCHAR(255) NOT NULL,
   `numero` VARCHAR(8) DEFAULT NULL,
   `bairro` varchar(50) DEFAULT NULL,
@@ -16,9 +15,9 @@ CREATE TABLE `cliente` (
   `nome` VARCHAR(200) DEFAULT NULL,
   `cpf` VARCHAR(14) DEFAULT NULL,
   `data_nascimento` DATE DEFAULT NULL,
-  `id_endereco_fk` INT NOT NULL,
+  `id_endereco_fk` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_endereco_fk`) REFERENCES `endereco` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
+  FOREIGN KEY (`id_endereco_fk`) REFERENCES `endereco` (`id`) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 CREATE TABLE `pedido` (

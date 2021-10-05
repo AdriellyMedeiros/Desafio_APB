@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import com.sun.istack.NotNull;
 
@@ -35,7 +35,7 @@ public class Pedido {
 	private Timestamp dataPedido;
 	
 	@NotNull()
-	@OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "id_cliente_fk", foreignKey = @ForeignKey(name = "fk_endereco"), referencedColumnName = "id")
+	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "id_cliente_fk", foreignKey = @ForeignKey(name = "fk_cliente"), referencedColumnName = "id")
 	private Cliente cliente;
 }

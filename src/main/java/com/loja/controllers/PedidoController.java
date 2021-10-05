@@ -48,8 +48,8 @@ public class PedidoController {
 	
 	@PutMapping("/{id}")
 	public String atualizarPedido(@PathVariable("id") Long id, @RequestBody Pedido pedido) {
-		Pedido c = service.atualizar(pedido, id);
-		return "Pedido atualizado com sucesso: " + c.getId();
+		Pedido p = service.atualizar(pedido, id);
+		return "Pedido atualizado com sucesso: " + p.getId();
 	}
 	
 	@DeleteMapping("/{id}")

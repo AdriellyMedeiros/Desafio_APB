@@ -54,7 +54,7 @@ public class ClienteController {
 	@PutMapping("/{id}")
 	public String atualizarCliente(@PathVariable("id") Long id, @RequestBody Cliente cliente) {
 		Cliente c = service.atualizar(cliente, id);
-		return "Aluno atualizado com sucesso: " + c.getId();
+		return "Cliente atualizado com sucesso: " + c.getId();
 	}
 	
 	@DeleteMapping("/{id}")

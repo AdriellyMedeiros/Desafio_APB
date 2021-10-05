@@ -1,6 +1,5 @@
 package com.loja.models;
 
-
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -11,9 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
-import com.sun.istack.NotNull;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,8 +35,7 @@ public class Cliente {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	
-	@NotNull()
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_endereco_fk", foreignKey = @ForeignKey(name = "fk_endereco"), referencedColumnName = "id")
 	private Endereco endereco;
 }
